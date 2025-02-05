@@ -14,8 +14,10 @@ const sampleDataForPhotoListItem = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-const PhotoListItem = () => {
-  /* Insert React */
+const PhotoListItem = ({ username, imageSource, id, location, profile }) => {
+  return (
+    
+  )
 };
 
 export default PhotoListItem;
