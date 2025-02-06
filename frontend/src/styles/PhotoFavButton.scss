@@ -15,4 +15,11 @@
 .photo-list__fav-icon-svg {
   padding: 7px;
   top: 2px;
+  fill: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+//styling for favourite icon when pressed
+.photo-list__fav-icon-svg.favourited {  
+  transform: scale(1.09); 
 }
