@@ -2,15 +2,15 @@ import React from 'react';
 
 import '../styles/PhotoListItem.scss';
 
-const PhotoListItem = ({ username, imageSource, id, location, profile }) => {
+const PhotoListItem = ({ photo }) => {
   return (
-    <div key={id}>
-      <img src={imageSource} />
+    <div key={photo.id}>
+      <img src={photo.imageSource} />
       <div>
-        <img src={profile} />
+        <img src={photo.profile} />
         <div>
-          <p>{username}</p>
-          <p>{location.city}, {location.country}</p>
+          <p>{photo.username}</p>
+          <p>{photo.location.city}, {photo.location.country}</p>
         </div>
       </div>
     </div>
