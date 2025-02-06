@@ -1,12 +1,17 @@
 .photo-list__item {
-  margin: 24px;
-  padding: 8px;
+  margin: 24px auto;
+  padding: 20px;
+  border: 1px;
   border-width: 0.5px;
   border-color: lightgray;
   border-style: solid;
-  border-radius: 8px;
+  border-radius: 16px;
   max-width: fit-content;
 }
+
+// .photo-list__item:hover {
+//   transform: scale(1.01);
+// }
 
 .photo-list__image {
   user-select: none;
@@ -34,6 +39,8 @@
 
 .photo-list__user-details {
   display: flex;
+  padding: 8px;
+  align-items: center;
 }
 
 .photo-list__user-info {
