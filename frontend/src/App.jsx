@@ -4,22 +4,26 @@ import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
 const sampleDataForPhotoListItem = {
-  id: "1",
+  id: '1',
   location: {
-    city: "Montreal",
-    country: "Canada",
+    city: 'Montreal',
+    country: 'Canada',
   },
   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
+  username: 'Joe Example',
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
+// Array helper method
+const photos = new Array(3).fill(sampleDataForPhotoListItem);
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem photo={sampleDataForPhotoListItem} />
+      {photos.map((photo, index) => (
+        <PhotoListItem key={index} photo={photo} />
+      ))}
     </div>
   );
 };
