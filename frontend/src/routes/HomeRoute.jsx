@@ -15,6 +15,7 @@ const HomeRoute = ({
       <TopNavigationBar topics={topics} favouritedPhotos={favouritedPhotos} />
       <PhotoList
         photos={photos}
+        favouritedPhotos={favouritedPhotos}
         toggleFavourite={toggleFavourite}
         handlePhotoClick={handlePhotoClick}
       />

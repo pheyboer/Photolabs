@@ -33,11 +33,14 @@ const App = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const toggleFavourite = (photoId) => {
-    setFavouritedPhotos((prev) =>
-      prev.includes(photoId)
+    console.log(`Toggling favourite for photo ID: ${photoId}`); // Debugging
+    setFavouritedPhotos((prev) => {
+      const newState = prev.includes(photoId)
         ? prev.filter((id) => id !== photoId)
-        : [...prev, photoId]
-    );
+        : [...prev, photoId];
+      console.log("Updated favouritedPhotos:", newState); // Logging
+      return newState;
+    });
   };
 
   const handlePhotoClick = (photo) => {
