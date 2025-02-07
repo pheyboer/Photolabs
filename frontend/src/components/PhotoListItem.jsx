@@ -5,7 +5,7 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = ({ photo }) => {
   //favourite status from the photo object false
-  const [isFavourited, setIsFavourited] = useState(photo.isFavourited || false);
+  const [isFavourited, setIsFavourited] = useState(Boolean(photo.isFavourited));
 
   //function to toggle favourite status
   const handleFavouriteToggle = useCallback(() => {

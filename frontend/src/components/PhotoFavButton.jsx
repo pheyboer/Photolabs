@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
