@@ -18,15 +18,15 @@ const PhotoListItem = ({ photo }) => {
         selected={isFavourited}
         onFavouriteToggle={handleFavouriteToggle}
       />
-      <img className="photo-list__image" src={photo.imageSource} alt="Photo" />
+      <img className="photo-list__image" src={photo.urls.regular} alt="Photo" />
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
-          src={photo.profile}
+          src={photo.user.profile}
           alt="Profile"
         />
         <div className="photo-list__user-info">
-          <p className="photo-list__username">{photo.username}</p>
+          <p className="photo-list__username">{photo.user.name}</p>
           <p className="photo-list__user-location">
             {photo.location.city}, {photo.location.country}
           </p>
