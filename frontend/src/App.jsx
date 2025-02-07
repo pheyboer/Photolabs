@@ -11,16 +11,16 @@ import topics from './mocks/topics'; // Import mock topics
 
 import './App.scss';
 
-const sampleDataForPhotoListItem = {
-  id: '1',
-  location: {
-    city: 'Montreal',
-    country: 'Canada',
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: 'Joe Example',
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
+// const sampleDataForPhotoListItem = {
+//   id: '1',
+//   location: {
+//     city: 'Montreal',
+//     country: 'Canada',
+//   },
+//   imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+//   username: 'Joe Example',
+//   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+// };
 
 // // Array helper method
 // const photos = new Array(3).fill(sampleDataForPhotoListItem);
