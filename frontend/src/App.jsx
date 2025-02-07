@@ -3,6 +3,7 @@ import React from 'react';
 // import PhotoListItem from './components/PhotoListItem';
 import PhotoList from './components/PhotoList';
 import TopicList from './components/TopicList';
+import TopNavigationBar from './components/TopNavigationBar';
 import './App.scss';
 
 const sampleDataForPhotoListItem = {
@@ -23,7 +24,7 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <TopicList />
+      <TopNavigationBar />
       <PhotoList />
     </div>
   );
