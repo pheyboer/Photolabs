@@ -14,7 +14,7 @@ const TopicListItem = ({ title }) => {
 
 // setting default props for when component is rendered in isolation
 TopicListItem.defaultProps = {
-  label: 'Nature',
+  title: 'Nature',
   link: 'Insert Link',
 };
 
