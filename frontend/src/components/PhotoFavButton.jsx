@@ -16,10 +16,10 @@ const PhotoFavButton = ({ selected, onFavouriteToggle }) => {
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div
         className={`photo-list__fav-icon-svg ${
-          isFavourite ? 'favourited' : ''
+          selected ? 'favourited' : ''
         }`}
       >
-        <FavIcon selected={isFavourite} />
+        <FavIcon selected={selected} />
       </div>
     </div>
   );
