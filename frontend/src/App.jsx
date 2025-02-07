@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // import PhotoListItem from './components/PhotoListItem';
 // import PhotoList from './components/PhotoList';
@@ -27,9 +27,24 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const [favouritedPhotos, setFavouritedPhotos] = useState([]);
+
+  const toggleFavourite = (photoId) => {
+    setFavouritedPhotos((prev) =>
+      prev.includes(photoId)
+        ? prev.filter((id) => id !== photoId)
+        : [...prev, photoId]
+    );
+  };
+
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} />
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        favouritedPhotos={favouritedPhotos}
+        toggleFavourite={toggleFavourite}
+      />
     </div>
   );
 };

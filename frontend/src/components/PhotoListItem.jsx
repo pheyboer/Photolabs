@@ -3,20 +3,20 @@ import PhotoFavButton from './PhotoFavButton';
 
 import '../styles/PhotoListItem.scss';
 
-const PhotoListItem = ({ photo }) => {
+const PhotoListItem = ({ photo, isFavourited, toggleFavourite }) => {
   //favourite status from the photo object false
-  const [isFavourited, setIsFavourited] = useState(Boolean(photo.isFavourited));
+  // const [isFavourited, setIsFavourited] = useState(Boolean(photo.isFavourited));
 
   //function to toggle favourite status
-  const handleFavouriteToggle = useCallback(() => {
-    setIsFavourited((prevStatus) => !prevStatus);
-  }, []);
+  // const handleFavouriteToggle = useCallback(() => {
+  //   setIsFavourited((prevStatus) => !prevStatus);
+  // }, []);
 
   return (
     <div key={photo.id} className="photo-list__item">
       <PhotoFavButton
         selected={isFavourited}
-        onFavouriteToggle={handleFavouriteToggle}
+        onFavouriteToggle={() => toggleFavourite(photo.id)}
       />
       <img className="photo-list__image" src={photo.urls.regular} alt="Photo" />
       <div className="photo-list__user-details">
