@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import PhotoFavButton from './PhotoFavButton';
 
 import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = ({ photo }) => {
+  //favourite status from the photo object false
+  const [isFavourited, setIsFavourited] = useState(photo.isFavourited || false);
+
+  //function to toggle favourite status
+  const handleFavouriteToggle = useCallback(() => {
+    setIsFavourited((prevStatus) => !prevStatus);
+  }, []);
+
   return (
     <div key={photo.id} className="photo-list__item">
-      <PhotoFavButton />
+      <PhotoFavButton
+        selected={isFavourited}
+        onFavouriteToggle={handleFavouriteToggle}
+      />
       <img className="photo-list__image" src={photo.imageSource} alt="Photo" />
       <div className="photo-list__user-details">
         <img
