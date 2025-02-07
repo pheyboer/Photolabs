@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 // import TopicList from './components/TopicList';
 // import TopNavigationBar from './components/TopNavigationBar';
 import HomeRoute from './routes/HomeRoute';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 import photos from './mocks/photos'; // Import mock photos
 import topics from './mocks/topics'; // Import mock topics
@@ -28,6 +29,8 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [favouritedPhotos, setFavouritedPhotos] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const toggleFavourite = (photoId) => {
     setFavouritedPhotos((prev) =>
@@ -37,6 +40,16 @@ const App = () => {
     );
   };
 
+  const handlePhotoClick = (photo) => {
+    setSelectedPhoto(photo);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedPhoto(null);
+  };
+
   return (
     <div className="App">
       <HomeRoute
@@ -44,7 +57,12 @@ const App = () => {
         topics={topics}
         favouritedPhotos={favouritedPhotos}
         toggleFavourite={toggleFavourite}
+        handlePhotoClick={handlePhotoClick}
       />
+
+      {modalOpen && (
+        <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} />
+      )}
     </div>
   );
 };
