@@ -1,10 +1,14 @@
 import React from 'react';
 
 // import PhotoListItem from './components/PhotoListItem';
-import PhotoList from './components/PhotoList';
-import TopicList from './components/TopicList';
-import TopNavigationBar from './components/TopNavigationBar';
+// import PhotoList from './components/PhotoList';
+// import TopicList from './components/TopicList';
+// import TopNavigationBar from './components/TopNavigationBar';
 import HomeRoute from './routes/HomeRoute';
+
+import photos from './mocks/photos'; // Import mock photos
+import topics from './mocks/topics'; // Import mock topics
+
 import './App.scss';
 
 const sampleDataForPhotoListItem = {
@@ -25,7 +29,7 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <HomeRoute />
+      <HomeRoute photos={photos} topics={topics} />
     </div>
   );
 };
