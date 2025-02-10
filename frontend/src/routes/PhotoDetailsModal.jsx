@@ -58,8 +58,8 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
 
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Similar Photos</h3>
-      {photo.similarPhotos?.length > 0 ? (
-        <PhotoList photos={photo.similarPhotos} />
+      {photo.similarPhotos && Object.values(photo.similarPhotos).length > 0 ? (
+        <PhotoList photos={Object.values(photo.similarPhotos)} />
       ) : (
         <p>No similar photos available.</p>
       )}
