@@ -7,15 +7,20 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
   if (!photo) return null;
 
   //console log photo details
-  console.log('Photo Details Passed to Modal:', {
-    id: photo.id,
-    imageUrl: photo.urls.regular,
-    photographerName: photo.user.name,
-    photographerProfile: photo.user.profile,
-    location: photo.location
-      ? `${photo.location.city}, ${photo.location.country}`
-      : 'Unknown Location',
-  });
+  // console.log('Photo Details Passed to Modal:', {
+  //   id: photo.id,
+  //   imageUrl: photo.urls.regular,
+  //   photographerName: photo.user.name,
+  //   photographerProfile: photo.user.profile,
+  //   location: photo.location
+  //     ? `${photo.location.city}, ${photo.location.country}`
+  //     : 'Unknown Location',
+  // });
+
+  //moved location outside of jsx
+  const location = photo.location
+    ? `${photo.location.city}, ${photo.location.country}`
+    : 'Unknown Location';
 
   return (
     <div className="photo-details-modal">
@@ -46,16 +51,18 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
             {photo.user.name}
           </p>
           <p className="photo-details-modal__photographer-location">
-            {photo.location
-              ? `${photo.location.city}, ${photo.location.country}`
-              : 'Unknown Location'}
+            {location}
           </p>
         </div>
       </div>
 
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Similar Photos</h3>
-      <PhotoList photos={photo.similarPhotos || []} />
+      {photo.similarPhotos?.length > 0 ? (
+        <PhotoList photos={photo.similarPhotos} />
+      ) : (
+        <p>No similar photos available.</p>
+      )}
     </div>
   );
 };
