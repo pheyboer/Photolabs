@@ -38,13 +38,18 @@ const App = () => {
       const newState = prev.includes(photoId)
         ? prev.filter((id) => id !== photoId)
         : [...prev, photoId];
-      console.log("Updated favouritedPhotos:", newState); // Logging
+      console.log('Updated favouritedPhotos:', newState); // Logging
       return newState;
     });
   };
 
+  const getSimilarPhotos = (photoId) => {
+    return photos.filter((p) => p.id !== photoId).slice(0, 4);
+  };
+
   const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
+    setSelectedPhoto({ ...photo, similarPhotos: getSimilarPhotos(photo.id) });
+    // setSelectedPhoto(photo);
     setModalOpen(true);
   };
 
@@ -66,7 +71,12 @@ const App = () => {
       />
 
       {modalOpen && (
-        <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} photos={photos} />
+        <PhotoDetailsModal
+          photo={selectedPhoto}
+          closeModal={closeModal}
+          photos={photos}
+          similarPhotos={getSimilarPhotos(selectedPhoto.id)}
+        />
       )}
     </div>
   );

@@ -55,7 +55,7 @@ const PhotoDetailsModal = ({ photo, closeModal, photos }) => {
 
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Similar Photos</h3>
-      <PhotoList photos={similarPhotos} />
+      <PhotoList photos={photo.similarPhotos} />
     </div>
   );
 };

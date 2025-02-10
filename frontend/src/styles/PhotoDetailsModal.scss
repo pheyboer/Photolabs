@@ -1,15 +1,18 @@
 .photo-details-modal {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: auto;
-  width: 50%;
+  width: 1000px;
   max-height: 70vh;
   overflow-y: scroll;
   border-radius: 12px;
+  padding: 20px;
 }
 
 .photo-details-modal__close-button {
@@ -23,6 +26,17 @@
   cursor: pointer;
   margin-left: 16px;
   margin-top: 16px;
+  position: absolute;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .photo-details-modal__images {
@@ -31,12 +45,12 @@
 }
 
 .photo-details-modal__image {
-  // max-width: 90%;
-  // max-height: 75%;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
   object-fit: cover;
-  width: 80%;
-  height: 60%;
   border-radius: 8px;
+  align-self: center;
 }
 
 .photo-details-modal__top-bar {
@@ -70,9 +84,9 @@
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
-  margin-right: 8px;
-  width: 40px;
-  height: 40px;
+  margin-right: 12px;
+  width: 50px;
+  height: 50px;
 }
 
 .photo-details-modal__photographer-info {
@@ -80,4 +94,40 @@
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+}
+
+// responsive design
+
+@media (min-width: 1600px) {
+  .photo-details-modal {
+    width: 40vw; /* Makes it smaller on ultra-wide screens */
+  }
+}
+
+@media (max-width: 1024px) {
+  .photo-details-modal {
+    width: 60vw; /* Allows more space on smaller screens */
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .photo-details-modal {
+    width: 95%;
+    max-height: 85vh;
+    padding: 15px;
+  }
+
+  .photo-details-modal__image {
+    max-width: 100%;
+  }
+
+  .photo-details-modal__photographer-profile {
+    width: 40px;
+    height: 40px;
+  }
+
+  .photo-details-modal__photographer-info {
+    font-size: 12px;
+  }
 }
