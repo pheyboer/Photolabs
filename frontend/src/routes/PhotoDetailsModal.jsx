@@ -4,20 +4,14 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({ photo, closeModal }) => {
-  if (!photo) return null;
+  if (!photo)
+    return (
+      <div className="photo-details-modal">
+        <p className="photo-details-modal__loading">Loading photo details...</p>
+      </div>
+    );
 
-  //console log photo details
-  // console.log('Photo Details Passed to Modal:', {
-  //   id: photo.id,
-  //   imageUrl: photo.urls.regular,
-  //   photographerName: photo.user.name,
-  //   photographerProfile: photo.user.profile,
-  //   location: photo.location
-  //     ? `${photo.location.city}, ${photo.location.country}`
-  //     : 'Unknown Location',
-  // });
-
-  //moved location outside of jsx
+  //moved location logic outside of jsx
   const location = photo.location
     ? `${photo.location.city}, ${photo.location.country}`
     : 'Unknown Location';
@@ -36,7 +30,7 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
       <img
         className="photo-details-modal__image"
         src={photo.urls.regular}
-        alt="Selected"
+        alt={`Selected photo by ${photo.user.name}`}
       />
 
       {/* Photographer details */}
@@ -44,7 +38,7 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
         <img
           className="photo-details-modal__photographer-profile"
           src={photo.user.profile}
-          alt="Profile"
+          alt={`Profile picture of ${photo.user.name}`}
         />
         <div className="photo-details-modal__photographer-info">
           <p className="photo-details-modal__photographer-name">
@@ -58,10 +52,17 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
 
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Similar Photos</h3>
-      {photo.similarPhotos && Object.values(photo.similarPhotos).length > 0 ? (
+      {photo.similarPhotos === undefined ? (
+        <p className="photo-details-modal__loading">
+          Fetching similar photos...
+        </p>
+      ) : photo.similarPhotos &&
+        Object.values(photo.similarPhotos).length > 0 ? (
         <PhotoList photos={Object.values(photo.similarPhotos)} />
       ) : (
-        <p>No similar photos available.</p>
+        <p className="photo-details-modal__no-similar-photos">
+          No similar photos available.
+        </p>
       )}
     </div>
   );
