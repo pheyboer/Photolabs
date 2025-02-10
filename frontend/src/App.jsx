@@ -66,7 +66,7 @@ const App = () => {
       />
 
       {modalOpen && (
-        <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} />
+        <PhotoDetailsModal photo={selectedPhoto} closeModal={closeModal} photos={photos} />
       )}
     </div>
   );

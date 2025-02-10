@@ -1,18 +1,22 @@
 import React from 'react';
-
+import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ photo, closeModal }) => {
+const PhotoDetailsModal = ({ photo, closeModal, photos }) => {
+  if (!photo) return null;
 
+  //console log photo details
   console.log('Photo Details Passed to Modal:', {
     id: photo.id,
     imageUrl: photo.urls.regular,
     photographerName: photo.user.name,
     photographerProfile: photo.user.profile,
-    location: photo.location ? `${photo.location.city}, ${photo.location.country}` : 'Unknown Location',
+    location: photo.location
+      ? `${photo.location.city}, ${photo.location.country}`
+      : 'Unknown Location',
   });
-  
+
   return (
     <div className="photo-details-modal">
       {/* close button for photo modal */}
@@ -22,11 +26,36 @@ const PhotoDetailsModal = ({ photo, closeModal }) => {
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      {/* <img
+
+      {/* Selected photo */}
+      <img
         className="photo-details-modal__image"
         src={photo.urls.regular}
         alt="Selected"
-      /> */}
+      />
+
+      {/* Photographer details */}
+      <div className="photo-details-modal__photographer-details">
+        <img
+          className="photo-details-modal__photographer-profile"
+          src={photo.user.profile}
+          alt="Profile"
+        />
+        <div className="photo-details-modal__photographer-info">
+          <p className="photo-details-modal__photographer-name">
+            {photo.user.name}
+          </p>
+          <p className="photo-details-modal__photographer-location">
+            {photo.location
+              ? `${photo.location.city}, ${photo.location.country}`
+              : 'Unknown Location'}
+          </p>
+        </div>
+      </div>
+
+      {/* Similar photos section */}
+      <h3 className="photo-details-modal__header">Similar Photos</h3>
+      <PhotoList photos={similarPhotos} />
     </div>
   );
 };

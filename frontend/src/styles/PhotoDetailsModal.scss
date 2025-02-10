@@ -2,11 +2,12 @@
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
-  top: 35%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
-  height: 40%;
+  transform: translate(-50%, -50%);
+  height: auto;
   width: 50%;
+  max-height: 70vh;
   overflow-y: scroll;
   border-radius: 12px;
 }
@@ -30,8 +31,11 @@
 }
 
 .photo-details-modal__image {
-  max-width: 90%;
-  max-height: 75%;
+  // max-width: 90%;
+  // max-height: 75%;
+  object-fit: cover;
+  width: 80%;
+  height: 60%;
   border-radius: 8px;
 }
 
@@ -47,6 +51,7 @@
 .photo-details-modal__photographer-details {
   display: flex;
   font-size: 16px;
+  align-items: center;
 }
 
 .photo-details-modal__header {
