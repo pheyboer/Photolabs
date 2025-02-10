@@ -48,6 +48,8 @@ const App = () => {
     setModalOpen(true);
   };
 
+  //function that sets modelOpen state to false and selectedPhoto to null.
+  //then passed as prop to PhotoDetailsModal
   const closeModal = () => {
     setModalOpen(false);
     setSelectedPhoto(null);
