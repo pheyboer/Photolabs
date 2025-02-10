@@ -3,7 +3,7 @@ import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ photo, closeModal, photos }) => {
+const PhotoDetailsModal = ({ photo, closeModal }) => {
   if (!photo) return null;
 
   //console log photo details
@@ -55,7 +55,7 @@ const PhotoDetailsModal = ({ photo, closeModal, photos }) => {
 
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Similar Photos</h3>
-      <PhotoList photos={photo.similarPhotos} />
+      <PhotoList photos={photo.similarPhotos || []} />
     </div>
   );
 };
