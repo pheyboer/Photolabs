@@ -74,7 +74,7 @@ const PhotoDetailsModal = ({
       />
 
       {/* Similar photos section */}
-      <h3 className="photo-details-modal__header">Similar Photos</h3>
+      <h3 className="photo-details-modal__header">Related Photos</h3>
       {photo.similarPhotos === undefined ? (
         <p className="photo-details-modal__loading">
           Fetching similar photos...

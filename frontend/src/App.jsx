@@ -44,7 +44,7 @@ const App = () => {
   };
 
   const getSimilarPhotos = (photoId) => {
-    return photos.filter((p) => p.id !== photoId).slice(0, 4);
+    return photos.filter((p) => p.id !== photoId).slice(0, 6);
   };
 
   const handlePhotoClick = (photo) => {
