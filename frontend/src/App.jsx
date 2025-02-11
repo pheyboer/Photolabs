@@ -8,8 +8,8 @@ import HomeRoute from './routes/HomeRoute';
 import useApplicationData from "./hooks/useApplicationData";
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
-import photos from './mocks/photos'; // Import mock photos
-import topics from './mocks/topics'; // Import mock topics
+// import photos from './mocks/photos'; // Import mock photos
+// import topics from './mocks/topics'; // Import mock topics
 
 import './App.scss';
 
@@ -32,7 +32,7 @@ const App = () => {
   const {
     state,
     setPhotoSelected,
-    updateToFavPhotoId,
+    updateToFavPhotoIds,
     onClosePhotoDetailsModal,
   } = useApplicationData();
 
@@ -78,7 +78,7 @@ const App = () => {
         photos={photos}
         topics={state.topics}
         favouritedPhotos={favouritedPhotos}
-        toggleFavourite={updateToFavPhotoId}
+        toggleFavourite={updateToFavPhotoIds}
         handlePhotoClick={setPhotoSelected}
       />
 
@@ -86,7 +86,7 @@ const App = () => {
         <PhotoDetailsModal
           photo={selectedPhoto}
           closeModal={onClosePhotoDetailsModal}
-          toggleFavourite={updateToFavPhotoId}
+          toggleFavourite={updateToFavPhotoIds}
           favouritedPhotos={favouritedPhotos}
         />
       )}

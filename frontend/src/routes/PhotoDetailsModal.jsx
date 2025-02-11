@@ -94,7 +94,7 @@ const PhotoDetailsModal = ({
           photos={Object.values(photo.similarPhotos)}
           favouritedPhotos={favouritedPhotos}
           toggleFavourite={toggleFavourite}
-          handlePhotoClick={() => {}}
+          handlePhotoClick={setPhotoSelected}
         />
       ) : (
         <p className="photo-details-modal__no-similar-photos">
