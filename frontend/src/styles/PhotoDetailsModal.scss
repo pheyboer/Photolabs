@@ -24,9 +24,8 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 16px;
-  margin-top: 16px;
   position: absolute;
+  z-index: 9999;
   transition: transform 0.2s ease-in-out;
 
   &:hover {
@@ -54,7 +53,7 @@
 .photo-details-modal__image {
   width: 90%;
   max-width: 500px;
-  height: auto;
+  height: 400px;
   object-fit: cover;
   align-self: center;
 }

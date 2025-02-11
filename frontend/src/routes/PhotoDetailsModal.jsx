@@ -38,7 +38,9 @@ const PhotoDetailsModal = ({
       {/* close button for photo modal */}
       <button
         className="photo-details-modal__close-button"
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
           console.log('Close button clicked');
           closeModal();
         }}
