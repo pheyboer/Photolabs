@@ -48,22 +48,20 @@ const PhotoDetailsModal = ({
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      <div className="photo-details-modal__image-container">
-        {/* Selected photo */}
-        <img
-          className="photo-details-modal__image"
-          src={photo.urls.regular}
-          alt={`Selected photo by ${photo.user.name}`}
+      {/* favourite button */}
+      <div className="photo-details-modal__fav-icon">
+        <PhotoFavButton
+          selected={isFavourited}
+          onFavouriteToggle={() => toggleFavourite(photo.id)}
         />
-
-        {/* favourite button */}
-        <div className="photo-details-modal__fav-icon">
-          <PhotoFavButton
-            selected={isFavourited}
-            onFavouriteToggle={() => toggleFavourite(photo.id)}
-          />
-        </div>
       </div>
+
+      {/* Selected photo */}
+      <img
+        className="photo-details-modal__image"
+        src={photo.urls.regular}
+        alt={`Selected photo by ${photo.user.name}`}
+      />
 
       {/* Photographer details */}
       <div className="photo-details-modal__photographer-details">
@@ -86,21 +84,21 @@ const PhotoDetailsModal = ({
       <h3 className="photo-details-modal__header">Related Photos</h3>
       {photo.similarPhotos === undefined ? (
         <p className="photo-details-modal__loading">
-          Fetching similar photos...
+          Fetching related photos...
         </p>
       ) : photo.similarPhotos &&
         Object.values(photo.similarPhotos).length > 0 ? (
-        <PhotoList
-          photos={Object.values(photo.similarPhotos)}
-          favouritedPhotos={favouritedPhotos}
-          toggleFavourite={toggleFavourite}
-          handlePhotoClick={() => {}}
-        />
-      ) : (
-        <p className="photo-details-modal__no-similar-photos">
-          No similar photos available.
-        </p>
-      )}
+          <PhotoList
+            photos={Object.values(photo.similarPhotos)}
+            favouritedPhotos={favouritedPhotos}
+            toggleFavourite={toggleFavourite}
+            handlePhotoClick={() => {}}
+          />
+        ) : (
+          <p className="photo-details-modal__no-similar-photos">
+            No related photos available.
+          </p>
+        )}
     </div>
   );
 };

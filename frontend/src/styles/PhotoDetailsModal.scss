@@ -1,4 +1,5 @@
 .photo-details-modal {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -10,7 +11,7 @@
   height: auto;
   width: 1000px;
   max-height: 70vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 12px;
   padding: 20px;
 }
@@ -43,16 +44,12 @@
   margin-top: 8px;
 }
 
-.photo-details-modal__image-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .photo-details-modal__image {
+  display: block;
+  margin: 0 auto;
   width: 90%;
-  max-width: 500px;
+  // max-width: 500px;
   height: 400px;
   object-fit: cover;
   align-self: center;
@@ -60,8 +57,8 @@
 
 .photo-details-modal__fav-icon {
   position: absolute;
-  top: 10px;
-  left: 130px;
+  top: 20px;
+  left: calc(50% - 250px + 10px);
   z-index: 10;
 }
 
@@ -110,9 +107,13 @@
 
 // responsive design
 
-@media (min-width: 1600px) {
+@media (max-width: 1600px) {
   .photo-details-modal {
     width: 40vw; 
+  }
+  .photo-details-modal__fav-icon {
+    left: calc(50% - 250px + 8px);
+    top: 15px;
   }
 }
 
@@ -120,6 +121,14 @@
   .photo-details-modal {
     width: 60vw; 
     max-width: 700px;
+  }
+  .photo-details-modal__image {
+    width: 90%;
+    height: 400px;
+  }
+  .photo-details-modal__fav-icon {
+    left: calc(50% - 250px + 8px);
+    top: 15px;
   }
 }
 
