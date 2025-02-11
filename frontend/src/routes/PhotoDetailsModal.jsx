@@ -13,7 +13,9 @@ const PhotoDetailsModal = ({
   if (!photo)
     return (
       <div className="photo-details-modal">
-        <p className="photo-details-modal__loading">Loading photo details...</p>
+        <p className="photo-details-modal__loading">
+          Sorry, photo details could not be loaded
+        </p>
       </div>
     );
 
