@@ -75,7 +75,7 @@ const App = () => {
           photo={selectedPhoto}
           closeModal={closeModal}
           photos={photos}
-          similarPhotos={getSimilarPhotos(selectedPhoto.id)}
+          favouritedPhotos={favouritedPhotos}
         />
       )}
     </div>
