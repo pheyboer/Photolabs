@@ -102,7 +102,7 @@ const useApplicationData = () => {
 
   //get similar photos
   const getSimilarPhotos = (photoId) => {
-    return state.photos.filter(p => p.id !== photoId).slice(0, 6); // 6 similar photos
+    return state.photos.filter((p) => p.id !== photoId).slice(0, 6); // 6 similar photos
   };
 
   //open modal when photo is selected
@@ -115,22 +115,16 @@ const useApplicationData = () => {
 
   //close details modal
   const onClosePhotoDetailsModal = () => {
-    setSelectedPhoto(null);
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
   //toggling favourite photo
   const updateToFavPhotoIds = (photoId) => {
-    setFavouritedPhotos((prev) => {
-      const isFav = prev.includes(photoId);
-      return isFav ? prev.filter((id) => id !== photoId) : [...prev, photoId];
-    });
-  };
-
-  const state = {
-    photos,
-    topics,
-    selectedPhoto,
-    favouritedPhotos,
+    if (state.favouritedPhotos.includes(photoId)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photoId });
+    }
   };
 
   return {
