@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
 import PhotoFavButton from '../components/PhotoFavButton';
@@ -10,6 +10,13 @@ const PhotoDetailsModal = ({
   toggleFavourite,
   favouritedPhotos,
 }) => {
+  //close modal if prop is null or undefined
+  useEffect(() => {
+    if (!photo) {
+      closeModal();
+    }
+  }, [photo, closeModal]);
+
   if (!photo)
     return (
       <div className="photo-details-modal">
