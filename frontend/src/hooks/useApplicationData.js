@@ -31,9 +31,20 @@ const useApplicationData = () => {
       });
   }, []);
 
+  //get similar photos
+  const getSimilarPhotos = (photoId) => {
+    return photos
+      .filter(p => p.id !== photoId)
+      .slice(0, 6); // 6 similar photos
+  };
+
   //open modal when photo is selected
   const setPhotoSelected = (photo) => {
-    setSelectedPhoto(photo);
+    const photoWithSimilar = {
+      ...photo,
+      similarPhotos: getSimilarPhotos(photo.id)
+    };
+    setSelectedPhoto(photoWithSimilar);
   };
 
   //close details modal
