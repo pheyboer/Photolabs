@@ -11,6 +11,14 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
 };
 
+// initial state
+const initialState = {
+  photos: [],
+  topics: [],
+  selectedPhoto: null,
+  favouritedPhotos: [],
+};
+
 //reducer function
 
 const useApplicationData = () => {
