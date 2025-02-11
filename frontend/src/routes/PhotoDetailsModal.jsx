@@ -61,7 +61,7 @@ const PhotoDetailsModal = ({
       {/* favourite button */}
       <PhotoFavButton
         isFavourited={isFavourited}
-        onClick={() => toggleFavourite(photo.id)}
+        toggleFavourite={() => toggleFavourite(photo.id)}
       />
 
       {/* Similar photos section */}
