@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 12px, 24px;
+  padding: 12px 24px;
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
@@ -19,4 +19,45 @@
   text-underline-position: auto;
   margin-left: 24px;
   cursor: pointer;
+}
+
+//responsive nav bar
+@media (max-width: 1500px) {
+  .top-nav-bar {
+    padding: 8px 16px;
+    min-height: 64px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .top-nav-bar__logo {
+    font-size: 20px;
+    margin-left: 16px;
+  }
+}
+@media (max-width: 1000px) {
+  .top-nav-bar {
+    padding: 8px 16px;
+    min-height: 64px;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .top-nav-bar__logo {
+    font-size: 20px;
+    margin-left: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav-bar {
+    padding: 8px 12px;
+    height: 56px;
+    width: 90%;
+  }
+
+  .top-nav-bar__logo {
+    font-size: 18px;
+    margin-left: 12px;
+  }
 }
