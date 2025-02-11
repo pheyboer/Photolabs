@@ -35,11 +35,11 @@ const App = () => {
   const toggleFavourite = (photoId) => {
     console.log(`Toggling favourite for photo ID: ${photoId}`); // Debugging
     setFavouritedPhotos((prev) => {
-      const newState = prev.includes(photoId)
-        ? prev.filter((id) => id !== photoId)
-        : [...prev, photoId];
-      console.log('Updated favouritedPhotos:', newState); // Logging
-      return newState;
+      if (prev.includes(photoId)) {
+        return prev.filter((id) => id !== photoId);
+      } else {
+        return [...prev, photoId];
+      }
     });
   };
 
@@ -56,6 +56,7 @@ const App = () => {
   //function that sets modelOpen state to false and selectedPhoto to null.
   //then passed as prop to PhotoDetailsModal
   const closeModal = () => {
+    console.log("Closing modal...");
     setModalOpen(false);
     setSelectedPhoto(null);
   };

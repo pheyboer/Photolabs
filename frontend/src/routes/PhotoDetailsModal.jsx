@@ -38,17 +38,30 @@ const PhotoDetailsModal = ({
       {/* close button for photo modal */}
       <button
         className="photo-details-modal__close-button"
-        onClick={closeModal}
+        onClick={() => {
+          console.log('Close button clicked');
+          closeModal();
+        }}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      {/* Selected photo */}
-      <img
-        className="photo-details-modal__image"
-        src={photo.urls.regular}
-        alt={`Selected photo by ${photo.user.name}`}
-      />
+      <div className="photo-details-modal__image-container">
+        {/* Selected photo */}
+        <img
+          className="photo-details-modal__image"
+          src={photo.urls.regular}
+          alt={`Selected photo by ${photo.user.name}`}
+        />
+
+        {/* favourite button */}
+        <div className="photo-details-modal__fav-icon">
+          <PhotoFavButton
+            selected={isFavourited}
+            onFavouriteToggle={() => toggleFavourite(photo.id)}
+          />
+        </div>
+      </div>
 
       {/* Photographer details */}
       <div className="photo-details-modal__photographer-details">
@@ -67,12 +80,6 @@ const PhotoDetailsModal = ({
         </div>
       </div>
 
-      {/* favourite button */}
-      <PhotoFavButton
-        isFavourited={isFavourited}
-        toggleFavourite={() => toggleFavourite(photo.id)}
-      />
-
       {/* Similar photos section */}
       <h3 className="photo-details-modal__header">Related Photos</h3>
       {photo.similarPhotos === undefined ? (
@@ -85,6 +92,7 @@ const PhotoDetailsModal = ({
           photos={Object.values(photo.similarPhotos)}
           favouritedPhotos={favouritedPhotos}
           toggleFavourite={toggleFavourite}
+          handlePhotoClick={() => {}}
         />
       ) : (
         <p className="photo-details-modal__no-similar-photos">
