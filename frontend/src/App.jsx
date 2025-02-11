@@ -70,7 +70,7 @@ const App = () => {
         handlePhotoClick={handlePhotoClick}
       />
 
-      {modalOpen && (
+      {modalOpen && selectedPhoto && (
         <PhotoDetailsModal
           photo={selectedPhoto}
           closeModal={closeModal}
