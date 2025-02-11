@@ -9,6 +9,7 @@ const PhotoDetailsModal = ({
   closeModal,
   toggleFavourite,
   favouritedPhotos,
+  onPhotoSelect,
 }) => {
   //close modal if prop is null or undefined
   useEffect(() => {
@@ -94,7 +95,7 @@ const PhotoDetailsModal = ({
           photos={Object.values(photo.similarPhotos)}
           favouritedPhotos={favouritedPhotos}
           toggleFavourite={toggleFavourite}
-          handlePhotoClick={setPhotoSelected}
+          handlePhotoClick={onPhotoSelect}
         />
       ) : (
         <p className="photo-details-modal__no-similar-photos">

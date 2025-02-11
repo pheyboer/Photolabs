@@ -88,6 +88,7 @@ const App = () => {
           closeModal={onClosePhotoDetailsModal}
           toggleFavourite={updateToFavPhotoIds}
           favouritedPhotos={favouritedPhotos}
+          onPhotoSelect={setPhotoSelected}
         />
       )}
     </div>

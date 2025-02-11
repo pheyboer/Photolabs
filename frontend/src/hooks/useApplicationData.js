@@ -2,50 +2,68 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const useApplicationData = () => {
-  const [state, setState] = useState({
-    photos: [],
-    topics: [],
-    selectedPhoto: null,
-    favouritedPhotos: [],
-  });
-
+  const [photos, setPhotos] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [favouritedPhotos, setFavouritedPhotos] = useState([]);
   //load the initial data
   useEffect(() => {
-    Promise.all([axios.get('api/photos'), axios.get('api/topics')]).then(
-      ([photoRes, topicsRes]) => {
-        setState((prev) => ({
-          ...prev,
-          photos: photoRes.data,
-          topics: topicsRes.data,
-        }));
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8001';
+
+    // Fetch topics
+    axios.get(`${apiUrl}/api/topics`)
+      .then((response) => {
+        console.log('Topics loaded:', response.data.length);
+        setTopics(response.data);
+      })
+      .catch((error) => {
+        console.error('Topics API Error:', error.message);
+      });
+
+    // Fetch photos
+    axios.get(`${apiUrl}/api/photos`)
+      .then((response) => {
+        console.log('Photos loaded:', response.data.length);
+        setPhotos(response.data);
+      })
+      .catch((error) => {
+        console.error('Photos API Error:', error.message);
+      });
   }, []);
 
   //open modal when photo is selected
   const setPhotoSelected = (photo) => {
-    setState((prev) => ({ ...prev, selectedPhoto: photo }));
+    setSelectedPhoto(photo);
   };
 
   //close details modal
   const onClosePhotoDetailsModal = () => {
-    setState((prev) => ({ ...prev, selectedPhoto: null }));
+    setSelectedPhoto(null);
   };
 
   //toggling favourite photo
   const updateToFavPhotoIds = (photoId) => {
-    setState((prev) => {
-      const isFav = prev.favouritedPhotos.includes(photoId);
-      return {
-        ...prev,
-        favouritedPhotos: isFav
-          ? prev.favouritedPhotos.filter((id) => id !== photoId)
-          : [...prev.favouritedPhotos, photoId],
-      };
+    setFavouritedPhotos(prev => {
+      const isFav = prev.includes(photoId);
+      return isFav
+        ? prev.filter(id => id !== photoId)
+        : [...prev, photoId];
     });
   };
 
-  return { state, setPhotoSelected, updateToFavPhotoIds, onClosePhotoDetailsModal };
+  const state = {
+    photos,
+    topics,
+    selectedPhoto,
+    favouritedPhotos
+  };
+
+  return {
+    state,
+    setPhotoSelected,
+    updateToFavPhotoIds,
+    onClosePhotoDetailsModal,
+  };
 };
 
 export default useApplicationData;
