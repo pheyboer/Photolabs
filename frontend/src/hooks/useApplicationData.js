@@ -1,6 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+//action types
+export const ACTIONS = {
+  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
+  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SELECT_PHOTO: 'SELECT_PHOTO',
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+};
+
+//reducer function
+
 const useApplicationData = () => {
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
