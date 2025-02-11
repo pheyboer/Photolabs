@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 // import TopicList from './components/TopicList';
 // import TopNavigationBar from './components/TopNavigationBar';
 import HomeRoute from './routes/HomeRoute';
+import useApplicationData from "./hooks/useApplicationData";
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 import photos from './mocks/photos'; // Import mock photos
@@ -28,54 +29,64 @@ import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [favouritedPhotos, setFavouritedPhotos] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const {
+    state,
+    setPhotoSelected,
+    updateToFavPhotoId,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
-  const toggleFavourite = (photoId) => {
-    console.log(`Toggling favourite for photo ID: ${photoId}`); // Debugging
-    setFavouritedPhotos((prev) => {
-      if (prev.includes(photoId)) {
-        return prev.filter((id) => id !== photoId);
-      } else {
-        return [...prev, photoId];
-      }
-    });
-  };
+  const { photos, favouritedPhotos, selectedPhoto } = state;
 
-  const getSimilarPhotos = (photoId) => {
-    return photos.filter((p) => p.id !== photoId).slice(0, 6);
-  };
 
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto({ ...photo, similarPhotos: getSimilarPhotos(photo.id) });
-    // setSelectedPhoto(photo);
-    setModalOpen(true);
-  };
+  // const [favouritedPhotos, setFavouritedPhotos] = useState([]);
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  //function that sets modelOpen state to false and selectedPhoto to null.
-  //then passed as prop to PhotoDetailsModal
-  const closeModal = () => {
-    console.log("Closing modal...");
-    setModalOpen(false);
-    setSelectedPhoto(null);
-  };
+  // const toggleFavourite = (photoId) => {
+  //   console.log(`Toggling favourite for photo ID: ${photoId}`); // Debugging
+  //   setFavouritedPhotos((prev) => {
+  //     if (prev.includes(photoId)) {
+  //       return prev.filter((id) => id !== photoId);
+  //     } else {
+  //       return [...prev, photoId];
+  //     }
+  //   });
+  // };
+
+  // const getSimilarPhotos = (photoId) => {
+  //   return photos.filter((p) => p.id !== photoId).slice(0, 6);
+  // };
+
+  // const handlePhotoClick = (photo) => {
+  //   setSelectedPhoto({ ...photo, similarPhotos: getSimilarPhotos(photo.id) });
+  //   // setSelectedPhoto(photo);
+  //   setModalOpen(true);
+  // };
+
+  // //function that sets modelOpen state to false and selectedPhoto to null.
+  // //then passed as prop to PhotoDetailsModal
+  // const closeModal = () => {
+  //   console.log("Closing modal...");
+  //   setModalOpen(false);
+  //   setSelectedPhoto(null);
+  // };
 
   return (
     <div className="App">
       <HomeRoute
         photos={photos}
-        topics={topics}
+        topics={state.topics}
         favouritedPhotos={favouritedPhotos}
-        toggleFavourite={toggleFavourite}
-        handlePhotoClick={handlePhotoClick}
+        toggleFavourite={updateToFavPhotoId}
+        handlePhotoClick={setPhotoSelected}
       />
 
-      {modalOpen && selectedPhoto && (
+      {selectedPhoto && (
         <PhotoDetailsModal
           photo={selectedPhoto}
-          closeModal={closeModal}
-          toggleFavourite={toggleFavourite}
+          closeModal={onClosePhotoDetailsModal}
+          toggleFavourite={updateToFavPhotoId}
           favouritedPhotos={favouritedPhotos}
         />
       )}
