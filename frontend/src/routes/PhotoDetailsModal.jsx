@@ -1,10 +1,15 @@
 import React from 'react';
 import PhotoList from '../components/PhotoList';
 import '../styles/PhotoDetailsModal.scss';
-import PhotoFavButton from "../components/PhotoFavButton";
+import PhotoFavButton from '../components/PhotoFavButton';
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({ photo, closeModal, toggleFavourite, favouritedPhotos }) => {
+const PhotoDetailsModal = ({
+  photo,
+  closeModal,
+  toggleFavourite,
+  favouritedPhotos,
+}) => {
   if (!photo)
     return (
       <div className="photo-details-modal">
@@ -67,7 +72,11 @@ const PhotoDetailsModal = ({ photo, closeModal, toggleFavourite, favouritedPhoto
         </p>
       ) : photo.similarPhotos &&
         Object.values(photo.similarPhotos).length > 0 ? (
-        <PhotoList photos={Object.values(photo.similarPhotos)} />
+        <PhotoList
+          photos={Object.values(photo.similarPhotos)}
+          favouritedPhotos={favouritedPhotos}
+          toggleFavourite={toggleFavourite}
+        />
       ) : (
         <p className="photo-details-modal__no-similar-photos">
           No similar photos available.
