@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
+import { type } from '@testing-library/user-event/dist/type';
 
 //action types
 export const ACTIONS = {
@@ -64,6 +65,12 @@ const reducer = (state, action) => {
         selectedPhoto: null,
       };
 
+    case ACTIONS.SET_PHOTO_BY_TOPIC:
+      return {
+        ...state,
+        photos: action.payload,
+      };
+
     case ACTIONS.SET_ERROR:
       return {
         ...state,
@@ -110,6 +117,21 @@ const useApplicationData = () => {
       });
   }, []);
 
+  //get photos by topic ${apiUrl}/api/topics/photos/${topicId}
+  const fetchPhotosByTopic = (topicId) => {
+    axios
+      .get(`${apiUrl}/api/topics/photos/${topicId}`)
+      .then((response) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_BY_TOPIC, payload: response.data });
+      })
+      .catch(() => {
+        dispatch({
+          type: ACTIONS.SET_ERROR,
+          payload: 'Failed to fetch photos for the topic ',
+        });
+      });
+  };
+
   //get similar photos
   const getSimilarPhotos = (photoId) => {
     return state.photos.filter((p) => p.id !== photoId).slice(0, 6); // 6 similar photos
@@ -142,6 +164,7 @@ const useApplicationData = () => {
     setPhotoSelected,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
+    fetchPhotosByTopic,
   };
 };
 
