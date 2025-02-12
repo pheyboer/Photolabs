@@ -9,6 +9,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  SET_PHOTO_BY_TOPIC: 'SET_PHOTOS_BY_TOPIC',
+  SET_ERROR: 'SET_ERROR',
 };
 
 // initial state
@@ -17,11 +19,12 @@ const initialState = {
   topics: [],
   selectedPhoto: null,
   favouritedPhotos: [],
+  error: null, //state for error handling
 };
 
 //reducer function
 
-function reducer(state, action) {
+const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
       return {
@@ -61,42 +64,49 @@ function reducer(state, action) {
         selectedPhoto: null,
       };
 
+    case ACTIONS.SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+
     default:
       throw new Error(
         `Tried to reduce with an unsupported action type: ${action.type}`
       );
   }
-}
+};
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8001';
-
-  // const [photos, setPhotos] = useState([]);
-  // const [topics, setTopics] = useState([]);
-  // const [selectedPhoto, setSelectedPhoto] = useState(null);
-  // const [favouritedPhotos, setFavouritedPhotos] = useState([]);
 
   //load the initial data
   useEffect(() => {
     // Fetch topics
     axios
       .get(`${apiUrl}/api/topics`)
-      .then((response) =>
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data })
-      )
+      .then((response) => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data });
+      })
       .catch((error) => {
-        console.error('Topics API Error:', error.message);
+        dispatch({
+          type: ACTIONS.SET_ERROR,
+          payload: 'Failed to fetch topics, sorry',
+        });
       });
 
     // Fetch photos
     axios
       .get(`${apiUrl}/api/photos`)
-      .then((response) =>
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data })
-      )
+      .then((response) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data });
+      })
       .catch((error) => {
-        console.error('Photos API Error:', error.message);
+        dispatch({
+          type: ACTIONS.SET_ERROR,
+          payload: 'Failed to fetch photos, sorry',
+        });
       });
   }, []);
 
