@@ -8,8 +8,12 @@ import '../styles/TopicListItem.scss';
 //   label: 'Nature',
 // };
 
-const TopicListItem = ({ title }) => {
-  return <li className="topic-list__item">{title}</li>;
+const TopicListItem = ({ title, id, onSelect }) => {
+  return (
+    <li className="topic-list__item" onClick={() => onSelect(id)}>
+      {title}
+    </li>
+  );
 };
 
 // setting default props for when component is rendered in isolation

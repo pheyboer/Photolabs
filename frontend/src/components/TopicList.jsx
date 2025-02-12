@@ -3,7 +3,7 @@ import TopicListItem from './TopicListItem';
 
 import '../styles/TopicList.scss';
 
-const TopicList = ({ topics }) => {
+const TopicList = ({ topics, fetchPhotosByTopic }) => {
   // const [topics, setTopics] = useState([]);
 
   // useEffect(() => {
@@ -13,7 +13,11 @@ const TopicList = ({ topics }) => {
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map((topic) => (
-        <TopicListItem key={topic.id} title={topic.title} />
+        <TopicListItem
+          key={topic.id}
+          topic={topic}
+          fetchPhotosByTopic={fetchPhotosByTopic}
+        />
       ))}
     </div>
   );

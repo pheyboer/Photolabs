@@ -34,6 +34,7 @@ const App = () => {
     setPhotoSelected,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
+    fetchPhotosByTopic,
   } = useApplicationData();
 
   const { photos, favouritedPhotos, selectedPhoto } = state;
@@ -80,6 +81,7 @@ const App = () => {
         favouritedPhotos={favouritedPhotos}
         toggleFavourite={updateToFavPhotoIds}
         handlePhotoClick={setPhotoSelected}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
 
       {selectedPhoto && (
