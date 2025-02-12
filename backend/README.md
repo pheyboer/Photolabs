@@ -4,8 +4,13 @@
 - start psql ```sudo service postgresql start```
 ```psql -U labber -d photolabs_development```
 - in backend
-- npm run in backend and frontend
+- npm start
 
+- npm run start in backend and frontend
+
+http://localhost:8001/api/photos
+http://localhost:8001/api/topics
+http://localhost:8001/api/topics/photos/:id :id is 1 or 2 or 3
 ## Setup
 
 Install dependencies with `npm install`.
