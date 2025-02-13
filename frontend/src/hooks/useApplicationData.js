@@ -1,6 +1,5 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
-import { type } from '@testing-library/user-event/dist/type';
 
 //action types
 export const ACTIONS = {

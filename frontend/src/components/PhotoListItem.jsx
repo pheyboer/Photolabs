@@ -9,10 +9,8 @@ const PhotoListItem = ({
   handlePhotoClick,
   favouritedPhotos = [],
 }) => {
-  // console.log(favouritedPhotos);
   //favourite status from the photo object false
   const isFavourited = favouritedPhotos.includes(photo.id);
-  // console.log(`Is this photo favourited? ${isFavourited}`);
 
   //function to toggle favourite status
   const handleFavouriteToggle = useCallback(() => {
