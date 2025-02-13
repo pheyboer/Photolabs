@@ -65,6 +65,7 @@
   align-items: center;
   margin-top: 10px;
   width: 100%;
+  aspect-ratio: 16/9;
 }
 
 .photo-details-modal__image {
@@ -73,6 +74,7 @@
   height: 400px;
   object-fit: cover;
   align-self: center;
+  max-height: 60vh;
 }
 
 .photo-details-modal__fav-icon {
@@ -153,7 +155,7 @@
   }
   .photo-details-modal__fav-icon {
     top: 9px;
-    left: 17px;
+    left: 19px;
   }
   .photo-details-modal__close-button {
     top: 10px;

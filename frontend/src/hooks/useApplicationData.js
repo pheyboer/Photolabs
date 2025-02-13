@@ -87,34 +87,24 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8001';
 
-  //load the initial data
+  //load the initial data and use promise.all for better performance
   useEffect(() => {
-    // Fetch topics
-    axios
-      .get(`${apiUrl}/api/topics`)
-      .then((response) => {
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: response.data });
+    Promise.all([
+      axios.get(`${apiUrl}/api/topics`),
+      axios.get(`${apiUrl}/api/photos`),
+    ])
+      .then(([topicsRes, photosRes]) => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicsRes.data });
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosRes.data });
       })
       .catch((error) => {
         dispatch({
           type: ACTIONS.SET_ERROR,
-          payload: 'Failed to fetch topics, sorry',
+          payload: 'Failed to fetch initial data',
         });
+        console.error('API Error:', error);
       });
-
-    // Fetch photos
-    axios
-      .get(`${apiUrl}/api/photos`)
-      .then((response) => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: response.data });
-      })
-      .catch((error) => {
-        dispatch({
-          type: ACTIONS.SET_ERROR,
-          payload: 'Failed to fetch photos, sorry',
-        });
-      });
-  }, []);
+  }, [apiUrl]);
 
   //get photos by topic ${apiUrl}/api/topics/photos/${topicId}
   const fetchPhotosByTopic = (topicId) => {
