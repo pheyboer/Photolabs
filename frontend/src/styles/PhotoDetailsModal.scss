@@ -127,7 +127,7 @@
 
 // responsive design
 
-@media (max-width: 1880px) {
+@media screen and (max-width: 1440px) {
   .photo-details-modal {
     width: 50vw; 
     max-width: 700px;
@@ -146,7 +146,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .photo-details-modal {
     width: 50vw; 
     max-width: 700px;
@@ -161,7 +161,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .photo-details-modal {
     width: 50vw;
     max-width: 700px;
@@ -188,5 +188,23 @@
   .photo-details-modal__close-button {
     top: 10px;
     left: 2px;
+  }
+}
+
+// responsive for larger screens
+@media screen and (min-width: 1441px) {
+  .photo-details-modal {
+    width: 50vw;
+    max-width: 700px;
+    object-fit: cover;
+  }
+  
+  .photo-details-modal__image {
+    max-width: 800px;
+  }
+  
+  .photo-details-modal__fav-icon {
+    top: 10px;
+    left: 35px;
   }
 }
