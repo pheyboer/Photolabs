@@ -52,6 +52,8 @@ npm start
 - Get photos by topic: GET /api/topics/photos/:id
 
 ## Screenshots
+!["Photolabs](https://github.com/pheyboer/Photolabs/blob/main/photolabs1.png)
+!["Photolabs Modal Window](https://github.com/pheyboer/Photolabs/blob/main/photolabs2png.png)
 
 ## Dependencies
   ### Frontend
