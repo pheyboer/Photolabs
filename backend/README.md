@@ -1,23 +1,10 @@
 # Photolabs API
 
-## Instructions
-- start psql ```sudo service postgresql start```
-```psql -U labber -d photolabs_development```
-- in backend
-- npm start
-
-- npm run start in backend and frontend
-
-http://localhost:8001/api/photos
-http://localhost:8001/api/topics
-http://localhost:8001/api/topics/photos/:id :id is 1 or 2 or 3
 ## Setup
 
 Install dependencies with `npm install`.
 
 ## Creating The DB
-- start psql ```sudo service postgresql start```
-```psql -U labber -d photolabs_development```
 
 Use the `psql -U labber` command to login to the PostgreSQL server with the username `labber` and the password `labber`. This command **MUST** be run in a vagrant terminal, we are using the PostgreSQL installation provided in the vagrant environment. M1/M2 and WSL2 users can execute this command in their terminal.
 
