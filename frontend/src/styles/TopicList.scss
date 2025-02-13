@@ -1,10 +1,9 @@
 .top-nav-bar__topic-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin-right: 24px;
   gap: 16px;
   padding: 10px 20px;
-  border-bottom: 1px solid;
 }
