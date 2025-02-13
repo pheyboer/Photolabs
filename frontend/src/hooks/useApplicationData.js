@@ -62,6 +62,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         selectedPhoto: null,
+        error: null,
       };
 
     case ACTIONS.SET_PHOTO_BY_TOPIC:

@@ -19,6 +19,10 @@
   text-underline-position: auto;
   margin-left: 24px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 //responsive nav bar
