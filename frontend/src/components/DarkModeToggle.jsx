@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/DarkModeToggle.scss';
+import DarkModeIcon from './DarkModeIcon';
 
 const DarkModeToggle = ({ isDarkMode, onToggle }) => {
   return (
@@ -8,7 +9,7 @@ const DarkModeToggle = ({ isDarkMode, onToggle }) => {
       onClick={onToggle}
       aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
     >
-      {isDarkMode ? '☀️' : '🌙'}
+      <DarkModeIcon />
     </button>
   );
 };

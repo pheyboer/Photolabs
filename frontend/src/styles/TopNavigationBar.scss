@@ -2,13 +2,29 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 12px 24px;
+  padding: 12px 12px;
   align-items: center;
   -webkit-box-shadow: 0 4px 6px -6px #222;
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
   width: 100%;
+}
+
+.top-nav-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;  
+  margin-left: auto;
+  padding-top: 10px;
+
+  .dark-mode-toggle {
+    order: 2; // Puts dark mode toggle on the right
+  }
+  
+  .fav-badge {
+    order: 1; // Puts heart icon on the left
+  }
 }
 
 .top-nav-bar__logo {
