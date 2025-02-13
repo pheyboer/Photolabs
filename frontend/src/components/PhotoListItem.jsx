@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import PhotoFavButton from './PhotoFavButton';
 
 import '../styles/PhotoListItem.scss';
@@ -9,7 +9,6 @@ const PhotoListItem = ({
   handlePhotoClick,
   favouritedPhotos = [],
 }) => {
-  //favourite status from the photo object false
   const isFavourited = favouritedPhotos.includes(photo.id);
 
   //function to toggle favourite status
