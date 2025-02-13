@@ -9,10 +9,15 @@ const HomeRoute = ({
   favouritedPhotos,
   toggleFavourite,
   handlePhotoClick,
+  fetchPhotosByTopic,
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favouritedPhotos={favouritedPhotos} />
+      <TopNavigationBar
+        topics={topics}
+        favouritedPhotos={favouritedPhotos}
+        fetchPhotosByTopic={fetchPhotosByTopic}
+      />
       <PhotoList
         photos={photos}
         favouritedPhotos={favouritedPhotos}

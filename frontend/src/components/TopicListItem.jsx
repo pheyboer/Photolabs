@@ -8,10 +8,11 @@ import '../styles/TopicListItem.scss';
 //   label: 'Nature',
 // };
 
-const TopicListItem = ({ title, id, onSelect }) => {
+const TopicListItem = ({ topic, fetchPhotosByTopic }) => {
   return (
-    <li className="topic-list__item" onClick={() => onSelect(id)}>
-      {title}
+    
+    <li className="topic-list__item" onClick={() => fetchPhotosByTopic(topic.id)}>
+      {topic.title}
     </li>
   );
 };
