@@ -1,0 +1,19 @@
+.dark-mode-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+}

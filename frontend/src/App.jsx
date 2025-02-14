@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HomeRoute from './routes/HomeRoute';
-import useApplicationData from "./hooks/useApplicationData";
+import useApplicationData from './hooks/useApplicationData';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 import './App.scss';
@@ -14,12 +14,13 @@ const App = () => {
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
     fetchPhotosByTopic,
+    toggleDarkMode,
   } = useApplicationData();
 
-  const { photos, favouritedPhotos, selectedPhoto } = state;
+  const { photos, favouritedPhotos, selectedPhoto, isDarkMode } = state;
 
   return (
-    <div className="App">
+    <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
       <HomeRoute
         photos={photos}
         topics={state.topics}
@@ -27,6 +28,8 @@ const App = () => {
         toggleFavourite={updateToFavPhotoIds}
         handlePhotoClick={setPhotoSelected}
         fetchPhotosByTopic={fetchPhotosByTopic}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
 
       {selectedPhoto && (

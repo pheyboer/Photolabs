@@ -10,6 +10,8 @@ const HomeRoute = ({
   toggleFavourite,
   handlePhotoClick,
   fetchPhotosByTopic,
+  isDarkMode,
+  toggleDarkMode,
 }) => {
   return (
     <div className="home-route">
@@ -17,6 +19,8 @@ const HomeRoute = ({
         topics={topics}
         favouritedPhotos={favouritedPhotos}
         fetchPhotosByTopic={fetchPhotosByTopic}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
       <PhotoList
         photos={photos}

@@ -11,6 +11,7 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   SET_PHOTO_BY_TOPIC: 'SET_PHOTOS_BY_TOPIC',
   SET_ERROR: 'SET_ERROR',
+  TOGGLE_DARK_MODE: 'TOGGLE_DARK_MODE',
 };
 
 // initial state
@@ -20,6 +21,7 @@ const initialState = {
   selectedPhoto: null,
   favouritedPhotos: [],
   error: null, //state for error handling
+  isDarkMode: false,
 };
 
 //reducer function
@@ -77,6 +79,12 @@ const reducer = (state, action) => {
         error: action.payload,
       };
 
+    case ACTIONS.TOGGLE_DARK_MODE:
+      return {
+        ...state,
+        isDarkMode: !state.isDarkMode,
+      };
+
     default:
       throw new Error(
         `Tried to reduce with an unsupported action type: ${action.type}`
@@ -87,6 +95,9 @@ const reducer = (state, action) => {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8001';
+  const toggleDarkMode = () => {
+    dispatch({ type: ACTIONS.TOGGLE_DARK_MODE });
+  };
 
   //load the initial data and use promise.all for better performance
   useEffect(() => {
@@ -155,6 +166,7 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
     fetchPhotosByTopic,
+    toggleDarkMode,
   };
 };
 
