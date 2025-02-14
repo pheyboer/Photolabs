@@ -16,7 +16,7 @@ const PhotoDetailsModal = ({
       closeModal();
     }
   };
-  //close modal if prop is null or undefined
+  //close modal if prop is falsy (null, undefined, false, 0, '', or NaN)
   useEffect(() => {
     if (!photo) {
       closeModal();
