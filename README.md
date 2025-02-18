@@ -15,6 +15,7 @@ Courtesy to [Lighthouse Labs](https://www.lighthouselabs.ca), the project was do
 - Favorite/unfavorite photos
 - View topics and filter photos by topic
 - Responsive design
+- Dark Mode
 
 ## User Stories
 - A user can view photos from the homepage loaded from the API.
